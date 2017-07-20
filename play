@@ -1,0 +1,17 @@
+#!/bin/bash
+echo $1
+osascript <<__EOL__
+tell application "QuickTime Player"
+    quit
+end tell
+__EOL__
+
+speed=$(cat ~/.musicspeed)
+open -a "QuickTime Player"
+osascript <<__EOL__
+tell application "QuickTime Player"
+    set file_path to "$1" as POSIX file
+    play (open file_path)
+    set rate of document 1 to $speed
+end tell
+__EOL__
