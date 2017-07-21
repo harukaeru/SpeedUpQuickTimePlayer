@@ -4,7 +4,7 @@ currentplaying=$(cat ~/.musicisplaying | grep isplaying)
 
 while [ "$currentplaying" ]
 do
-    sleep 2
+    sleep 1
     ./set_isplaying
     currentplaying=$(cat ~/.musicisplaying | grep isplaying)
 done
