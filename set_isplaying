@@ -1,0 +1,11 @@
+#!/bin/bash
+osascript <<__EOL__
+tell application "QuickTime Player"
+    if (playing of document 1) then
+        do shell script "echo  isplaying > ~/.musicisplaying"
+    else
+        do shell script "echo  noplaying > ~/.musicisplaying"
+    end if
+end tell
+__EOL__
+[ $? -eq 1 ] &&  echo 'noplaying' > ~/.musicisplaying

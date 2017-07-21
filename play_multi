@@ -1,0 +1,13 @@
+#!/bin/bash
+./set_isplaying
+currentplaying=$(cat ~/.musicisplaying | grep isplaying)
+
+while [ "$currentplaying" ]
+do
+    echo 'sleeping'
+    sleep 2
+    ./set_isplaying
+    currentplaying=$(cat ~/.musicisplaying | grep isplaying)
+done
+
+./play "$1"
